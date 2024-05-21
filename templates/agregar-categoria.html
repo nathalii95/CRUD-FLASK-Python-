@@ -1,0 +1,25 @@
+{% extends './base.html' %}
+{% block titulo %}
+Agregar un Categoria
+{% endblock %}
+
+{% block contenido %}
+<br>
+<div class="p-3"><a href="{{url_for('categoria')}}" type="button" class="btn btn-info"> <i class="fa-solid fa-arrow-left"></i> Regresar</a></div>
+<br><br>
+<section class="p-3">
+    <h2>Agregar Categoria</h2>
+    <form action="{{url_for('guardar_categoria')}}" method="post">
+        <div class="mb-3">
+            <label for="" class="form-label">Id: </label>
+            <input type="text" name="id" id="id" class="form-control" readonly/>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Nombre Categoría:</label>
+            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingrese Nombre del producto" required/>
+        </div>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+    </form>
+</section>
+
+{% endblock %}

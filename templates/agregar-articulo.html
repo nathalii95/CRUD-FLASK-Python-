@@ -1,0 +1,38 @@
+{% extends './base.html' %}
+{% block titulo %}
+Agregar un artículo
+{% endblock %}
+
+{% block contenido %}
+<br>
+ <div class="p-3"><a href="{{url_for('articulos')}}" type="button" class="btn btn-info"> <i class="fa-solid fa-arrow-left"></i> Regresar</a></div>
+<br><br>
+<section class="p-3">
+    <h2>Agregar Artículo</h2>
+    <form action="{{url_for('guardar_articulo')}}" method="post">
+        <div class="mb-3">
+            <label for="" class="form-label">Id: </label>
+            <input type="text" name="id" id="id" class="form-control" readonly/>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingrese Nombre del producto" required/>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Precio:</label>
+            <input type="text" name="precio" id="precio" class="form-control" placeholder="Ingrese el precio" required/>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Categoría:</label>
+            <select name="categoria" id="categoria" class="form-control" required>
+                <option value="">Selecione Categoria</option>
+                {% for categoria in categorias %}
+                    <option  value="{{categoria[0]}}">{{categoria[1]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+    </form>
+</section>
+
+{% endblock %}

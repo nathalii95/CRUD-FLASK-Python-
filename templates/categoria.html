@@ -1,0 +1,39 @@
+{% extends './base.html' %}
+{% block titulo %}
+Categorias
+{% endblock %}
+{% block contenido %}
+<section class="p-3">
+<h2>Categoria</h2>
+<a href="{{url_for('agregar_categoria')}}" type="button" class="btn btn-warning"> <i class="fa-solid fa-square-plus"></i> Agregar Categoría</a>
+<a href="{{url_for('articulos')}}" type="button" class="btn btn-info"> <i class="fa-solid fa-arrow-left"></i> Regresar Articulo</a>
+<a href="{{url_for('inicio')}}" type="button" class="btn btn-danger"><i class="fa-solid fa-arrow-left"></i> Inicio</a>
+<table class="table table-dark table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for categoria in categorias %}
+        <tr>
+            <td>{{ categoria[0] }}</td>
+            <td>{{ categoria[1] }}</td>
+            <td><a href="{{url_for('editar_categoria', id=categoria[0])}}" type="button" class="btn btn-outline-success"> <i class="fa-solid fa-rotate-right"></i>Editar</a></td>
+            <td>
+                <form action="{{url_for('eliminar_categoria', id=categoria[0])}}" method="post">
+                 <input type="hidden" name="id" value="{{categoria[0]}}">
+                 <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+</section>
+{% endblock %}

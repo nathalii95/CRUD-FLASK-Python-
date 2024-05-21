@@ -1,0 +1,32 @@
+{% extends './base.html' %}
+{% block titulo %}
+<i class="fa-solid fa-arrow-right"></i> INGRESO
+{% endblock %}
+
+{% block contenido %}
+
+
+    <section class="p-3">
+        <form class="p-3 position-absolute top-50 start-50 translate-middle" method="post">
+          {% if error %}
+              <p class="text-danger">Error: Credenciales inválidas. Inténtalo de nuevo.</p>
+          {% endif %}
+            <h1 class="text-primary">INICIAR SESSION</h1>
+            <div class="mb-3">
+              <label class="form-label"><i class="fa-solid fa-user"></i> Usuario</label>
+              <input  type="text" id="nombre_usuario" name="nombre_usuario" class="form-control" >
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><i class="fa-solid fa-lock"></i> Contraseña</label>
+              <input type="password" id="contraseña" name="contraseña" class="form-control" >
+            </div>
+          
+            <div class="d-grid gap-2">
+                <input type="submit" value="Iniciar Sesión" class="btn btn-primary">
+            </div>
+        </form>
+
+    </section>
+{% endblock %}
+
+
